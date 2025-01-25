@@ -1,0 +1,245 @@
+:root {
+    --color-primary: #5099e5;
+    --color-dark-blue: #0E104B;
+    --color-black: #060606;
+    --color-text: #060606;
+    --color-white: #fff;
+}
+
+@font-face {
+    font-family: 'Inter medium';
+    src: url('@/../fonts/Inter_24pt-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Inter bold';
+    src: url('@/../fonts/Inter_24pt-Bold.ttf');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1rem;
+    font-family: 'Inter medium';
+    color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter medium';
+    color: var(--color-black);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Inter medium';
+}
+
+.list-no-decoration {
+    list-style: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+}
+
+.btn-link {
+    display: inline-block;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+    padding: 0.7rem 1.2rem;
+    border-radius: 2rem;
+    text-decoration: none !important;
+}
+
+.btn:hover {
+    color: var(--color-white) !important;
+}
+
+.btn-link:hover {
+    background-color: var(--color-black);
+    color: var(--color-white) !important;
+}
+
+header nav {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.logo img {
+    width: 60%;
+    height: 60%;
+}
+
+.navbar-nav {
+    margin-left: auto !important;
+}
+
+.navbar-nav li a {
+    margin-right: 1rem;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+i.fas.fa-chevron-down.toggle-dropdown {
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 0;
+}
+
+.home {
+    margin-top: 6rem;
+}
+
+.home-img {
+    background-image: url('@/../images/im1.jpg');
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    color: var(--color-white);
+    width: 100%;
+    height: 70vh;
+    padding: 10rem 7rem 10rem 50%;
+    border-radius: 7px;
+}
+
+.home h1 {
+    color: var(--color-white);
+}
+
+form .input-group {
+    width: 70%;
+    margin: auto;
+    position: relative;
+    top: -41px;
+    left: 0;
+}
+
+form .input-group .form-control {
+    padding: 1.7rem 1rem;
+}
+
+/*--------------------------------------------------------------
+# Offres Section
+--------------------------------------------------------------*/
+.offres article {
+    background: var(--color-white);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .offres .post-img {
+    max-height: 200px;
+    margin: -30px -30px 15px -30px;
+    overflow: hidden;
+  }
+
+  .offres .post-img img:hover {
+    background-color: #060606;
+  }
+  
+  .offres .post-category {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: -20px;
+  }
+  
+  .offres .title {
+    font-size: 16px;
+    padding: 0;
+    margin: 0 0 20px 0
+  }
+  
+  .offres .post-category a {
+    color: var(--color-black);
+    transition: 0.3s;
+  }
+  
+  .offres .post-category a:hover {
+    color: var(--color-dark-blue);
+  }
+  
+  .offres .icons i {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 1rem;
+    border-radius: 50%;
+  }
+
+  .offres .img-fluid.img-logo {
+    width: 50%;
+    height: auto;
+    background-color: aliceblue;
+    padding: 0.7rem 1.5rem;
+    border-radius: 7px;
+    position: relative;
+    top: -40px;
+    left: -5px;
+}
+
+/* Job-section*/
+.job .section-title {
+    padding-top: 5rem !important;
+    padding-bottom: 2.5rem !important;
+}
+
+.job .job-content {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+}
+
+.job .job-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 7px;
+    /*animation: up-down 2s ease-in-out infinite alternate-reverse both;*/
+}
+
+.my-8 {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
