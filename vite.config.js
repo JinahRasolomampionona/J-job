@@ -1,18 +1,30 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import path from 'path';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 'resources/librairies/fontawesome-free-6.1.1-web/css/all.min.css',
-                'resources/librairies/bootstrap-5.0.2-dist/css/bootstrap.min.css',
-                'resources/css/global.css', 
                 'resources/css/app.css', 
+                'resources/css/global.css', 
                 'resources/js/app.js',
-                'resources/librairies/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js'
+                'resources/css/responsive.css',
+                'resources/css/plugins.min.css',
+                'resources/css/kaiadmin.min.css',
+                'resources/css/demo.css',
+                'resources/css/login.css',
+                'resources/librairies/setting-demo.js',
             ],
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap' : path.resolve(__dirname, 'node_modules/bootstrap'),
+            '~aos' : path.resolve(__dirname, 'node_modules/aos'),
+            '~jquery' : path.resolve(__dirname, 'node_modules/jquery'),
+        }
+    }
 });
