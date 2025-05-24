@@ -20,7 +20,7 @@
             <div class="sidebar-logo">
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
-                    <a href="{{ route('admin.index') }}" class="logo-admin">
+                    <a href="{{ route('candidates.candidate') }}" class="logo-page">
                         <img src="{{ Vite::asset('resources/images/job-admin.png') }}" alt="navbar brand"
                             class="navbar-brand" width="70%" height="auto" />
                     </a>
@@ -42,56 +42,28 @@
                 <div class="sidebar-content">
                     <ul class="nav nav-secondary">
                         <li class="nav-item active">
-                            <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                            <a href="{{ route('candidates.candidate') }}">
                                 <i class="fas fa-home"></i>
-                                <p>Page administrateur</p>
+                                <p>Page candidat</p>
                             </a>
                         </li>
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
                             </span>
-                            <h4 class="text-section">Components</h4>
+                            <h4 class="text-section">Composants</h4>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.recruiters') }}">
-                                <i class="fas fa-user-check"></i>
-                                <p>Liste des recruteurs</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.candidates') }}">
-                                <i class="fas fa-users"></i>
-                                <p>Listes des candidats</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.offers.index') }}">
+                            <a href="{{ route('candidates.profiles.profil') }}">
                                 <i class="fas fa-pen-square"></i>
-                                <p>Validation offres</p>
+                                <p>Créer un profil</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.profiles.index') }}">
-                                <i class="fas fa-table"></i>
-                                <p>Validation Profils</p>
+                            <a href="{{ route('candidates.offers.index') }}">
+                                <i class="fas fa-th-list"></i>
+                                <p>Voir les offres d'emploi</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#maps">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <p>Maps</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="maps">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="maps/googlemaps.html">
-                                            <span class="sub-item">Google Maps</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                         <li class="nav-item">
                             <a href="widgets.html">
@@ -111,9 +83,9 @@
                 <div class="main-header-logo">
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
-                        <a href="{{ route('admin.index') }}" class="logo-admin">
+                        <a href="{{ route('candidates.candidate') }}" class="logo-page">
                             <img src="{{ Vite::asset('resources/images/job-admin.png') }}" alt="navbar brand"
-                                class="navbar-brand" width="70%" height="auto" />
+                                class="navbar-brand" width="70%" height="70%" />
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -141,7 +113,8 @@
                                         <i class="fa fa-search search-icon"></i>
                                     </button>
                                 </div>
-                                <input type="text" placeholder="Rechercher ..." class="form-control" />
+                                <input type="text" placeholder="Rechercher ..." class="form-control"
+                                    name="titre" />
                             </div>
                         </nav>
 
@@ -160,9 +133,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item topbar-icon dropdown hidden-caret">
-                                <a class="nav-link dropdown-toggle" href="#" id="messageDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-envelope"></i>
                                 </a>
                                 <ul class="dropdown-menu messages-notif-box animated fadeIn"
@@ -242,7 +214,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <li class="nav-item topbar-user dropdown hidden-caret">
                                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
                                     aria-expanded="false">
@@ -307,9 +278,12 @@
                     <nav class="pull-left">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.index') }}">
-                                    Job-admin
+                                <a class="nav-link" href="{{ route('index') }}">
+                                    My-Job
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('candidates.candidate') }}"> A propos </a>
                             </li>
                         </ul>
                     </nav>
@@ -383,6 +357,7 @@
         </div>
         <!-- End Custom template -->
     </div>
+    <!-- <script src="jquery/jquery.scrollbar.min.js"></script> -->
     @vite(['resources/js/app.js'])
     @vite(['resources/librairies/setting-demo.js'])
 </body>

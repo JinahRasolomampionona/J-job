@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Recruiters;
 
-use App\Models\Offers;
-use App\Models\Profil;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class ProfileViewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $totalRecruteurs = User::where('role', 'recruteur')->count();
-        $totalCandidats = User::where('role', 'candidat')->count();
-        $totalOffres = Offers::count();
-        $totalProfils = Profil::count();
-
-        return view('admin.index', compact('totalRecruteurs', 'totalCandidats', 'totalOffres', 'totalProfils'));
-
+        //
+        $candidats = User::role('candidat')
+            ->get();
+        return view('recruiters.profiles.index', ['candidats' => $candidats]);
     }
 
     /**
@@ -43,9 +38,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
         //
+        return view('recruiters.profiles.show', ['user'=>$user]);
     }
 
     /**

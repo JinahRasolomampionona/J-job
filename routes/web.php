@@ -1,23 +1,23 @@
 <?php
 
-use App\Http\Controllers\Admin\CandidatController;
-use App\Http\Controllers\Admin\RecruteurController;
-use App\Http\Controllers\Admin\ValidationOffreController;
-use App\Http\Controllers\Admin\ValidationProfilController;
+use App\Http\Controllers\Admin\CandidateController;
+use App\Http\Controllers\Admin\RecruiterController;
+use App\Http\Controllers\Admin\ValidationOfferController;
+use App\Http\Controllers\Admin\ValidationProfileController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Candidats\ExperienceController;
-use App\Http\Controllers\Candidats\FormationController;
-use App\Http\Controllers\Candidats\PcandidatController;
-use App\Http\Controllers\Candidats\ProfilController;
-use App\Http\Controllers\Candidats\VoiroffreController;
+use App\Http\Controllers\Candidates\CandidatePageController;
+use App\Http\Controllers\Candidates\OfferViewController;
+use App\Http\Controllers\Candidates\ExperienceController;
+use App\Http\Controllers\Candidates\FormationController;
+use App\Http\Controllers\Candidates\ProfilController;
 use App\Http\Controllers\GmailController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OffresController;
+use App\Http\Controllers\OffersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Recruteurs\ListoffreController;
-use App\Http\Controllers\Recruteurs\PrecruteurController;
-use App\Http\Controllers\Recruteurs\VoirprofilController;
+use App\Http\Controllers\Recruiters\OfferListController;
+use App\Http\Controllers\Recruiters\ProfileViewController;
+use App\Http\Controllers\Recruiters\RecruiterPageController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,78 +37,78 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class, 'home'])->name('index');
 
 /*Offres*/
-Route::get('/offres', [OffresController::class, 'index'])->name('offres.index');
-Route::get('/offre/{id}/detail', [OffresController::class, 'show'])->name('offres.show');
-Route::get('/offre/creation', [OffresController::class, 'create'])->name('offres.create');
-Route::get('offre/{id}/edition', [OffresController::class, 'edit'])->name('offres.edit');
-Route::post('offre/store', [OffresController::class, 'store'])->name('offres.store');
-Route::put('offre/{id}/update', [OffresController::class, 'update'])->name('offres.update');
-Route::post('offre/{id}/destroy', [OffresController::class, 'destroy'])->name('offres.destroy');
+Route::get('/offres', [OffersController::class, 'index'])->name('offers.index');
+Route::get('/offre/{id}/detail', [OffersController::class, 'show'])->name('offers.show');
+Route::get('/offre/creation', [OffersController::class, 'create'])->name('offers.create');
+Route::get('offre/{id}/edition', [OffersController::class, 'edit'])->name('offers.edit');
+Route::post('offre/store', [OffersController::class, 'store'])->name('offers.store');
+Route::put('offre/{id}/update', [OffersController::class, 'update'])->name('offers.update');
+Route::post('offre/{id}/destroy', [OffersController::class, 'destroy'])->name('offers.destroy');
 
 //Route Page Recruteur
-Route::get('/Page-recruteur', [PrecruteurController::class, 'index'])->name('recruteurs.recruteur');
+Route::get('/Page-recruteur', [RecruiterPageController::class, 'index'])->name('recruiters.recruiter');
 
-Route::get('/recruteurs/offres', [ListoffreController::class, 'index'])->name('recruteurs.offres.index');
-Route::get('/recruteurs/offre/{offre}/details', [ListoffreController::class, 'show'])->name('recruteurs.offres.show');
-Route::get('/recruteurs/offre/creation-offres', [ListoffreController::class, 'create'])->name('recruteurs.offres.create');
-Route::get('/recruteurs/offre/{offre}/editer-offres', [ListoffreController::class, 'edit'])->name('recruteurs.offres.edit');
-Route::post('/recruteurs/offre/store', [ListoffreController::class, 'store'])->name('recruteurs.offres.store');
-Route::post('/recruteurs/offre/{offre}/update', [ListoffreController::class, 'update'])->name('recruteurs.offres.update');
-Route::post('/recruteurs/offre/{offre}/destroy', [ListoffreController::class, 'destroy'])->name('recruteurs.offres.destroy');
+Route::get('/recruteurs/offres', [OfferListController::class, 'index'])->name('recruiters.offers.index');
+Route::get('/recruteurs/offre/{offre}/details', [OfferListController::class, 'show'])->name('recruiters.offers.show');
+Route::get('/recruteurs/offre/creation-offres', [OfferListController::class, 'create'])->name('recruiters.offers.create');
+Route::get('/recruteurs/offre/{offre}/editer-offres', [OfferListController::class, 'edit'])->name('recruiters.offers.edit');
+Route::post('/recruteurs/offre/store', [OfferListController::class, 'store'])->name('recruiters.offers.store');
+Route::post('/recruteurs/offre/{offre}/update', [OfferListController::class, 'update'])->name('recruiters.offers.update');
+Route::post('/recruteurs/offre/{offre}/destroy', [OfferListController::class, 'destroy'])->name('recruiters.offers.destroy');
 
-Route::get('/recruteur/profils', [VoirprofilController::class, 'index'])->name('recruteurs.profils.index');
-Route::get('/recruteur/profil/{user}/details', [VoirprofilController::class, 'show'])->name('recruteurs.profils.show');
+Route::get('/recruteur/profils', [ProfileViewController::class, 'index'])->name('recruiters.profiles.index');
+Route::get('/recruteur/profil/{user}/details', [ProfileViewController::class, 'show'])->name('recruiters.profiles.show');
 
 //Route Page Candidat
-Route::get('/candidat/offres', [VoiroffreController::class, 'index'])->name('candidats.offres.index');
-Route::get('/candidat/offre/{offre}/details', [VoiroffreController::class, 'show'])->name('candidats.offres.show');
+Route::get('/candidat/offres', [OfferViewController::class, 'index'])->name('candidates.offers.index');
+Route::get('/candidat/offre/{offre}/details', [OfferViewController::class, 'show'])->name('candidates.offers.show');
 
-Route::get('/Page-candidat', [PcandidatController::class, 'index'])->name('candidats.candidat');
+Route::get('/Page-candidat', [CandidatePageController::class, 'index'])->name('candidates.candidate');
 
 // Route Profil
-Route::get('/candidats/profils', [ProfilController::class, 'index'])->name('candidats.profils.profil');
-Route::get('/candidats/profil/{user}/details', [ProfilController::class, 'show'])->name('candidats.profils.show');
-Route::get('/candidats/profil/creation-profils', [ProfilController::class, 'create'])->name('candidats.profils.create');
-Route::get('/candidats/profil/{profil}/editer-profils', [ProfilController::class, 'edit'])->name('candidats.profils.edit');
-Route::post('/candidats/profil/store', [ProfilController::class, 'store'])->name('candidats.profils.store');
-Route::post('/candidats/profil/{profil}/update', [ProfilController::class, 'update'])->name('candidats.profils.update');
-Route::post('/candidats/profil/{profil}/destroy', [ProfilController::class, 'destroy'])->name('candidats.profils.destroy');
+Route::get('/candidats/profils', [ProfilController::class, 'index'])->name('candidates.profiles.profil');
+Route::get('/candidats/profil/{user}/details', [ProfilController::class, 'show'])->name('candidates.profiles.show');
+Route::get('/candidats/profil/creation-profils', [ProfilController::class, 'create'])->name('candidates.profiles.create');
+Route::get('/candidats/profil/{profil}/editer-profils', [ProfilController::class, 'edit'])->name('candidates.profiles.edit');
+Route::post('/candidats/profil/store', [ProfilController::class, 'store'])->name('candidates.profiles.store');
+Route::post('/candidats/profil/{profil}/update', [ProfilController::class, 'update'])->name('candidates.profiles.update');
+Route::post('/candidats/profil/{profil}/destroy', [ProfilController::class, 'destroy'])->name('candidates.profiles.destroy');
 
 //Route formation
-Route::get('/candidats/formations', [FormationController::class, 'index'])->name('candidats.formations.index');
-Route::get('/candidats/formation/{formation}/details', [FormationController::class, 'show'])->name('candidats.formations.show');
-Route::get('/candidats/formation/creation-formations', [FormationController::class, 'create'])->name('candidats.formations.create');
-Route::get('/candidats/formation/{formation}/editer-formations', [FormationController::class, 'edit'])->name('candidats.formations.edit');
-Route::post('/candidats/formation/store', [FormationController::class, 'store'])->name('candidats.formations.store');
-Route::post('/candidats/formation/{formation}/update', [FormationController::class, 'update'])->name('candidats.formations.update');
-Route::post('/candidats/formation/{formation}/destroy', [FormationController::class, 'destroy'])->name('candidats.formations.destroy');
+Route::get('/candidats/formations', [FormationController::class, 'index'])->name('candidates.formations.index');
+Route::get('/candidats/formation/{formation}/details', [FormationController::class, 'show'])->name('candidates.formations.show');
+Route::get('/candidats/formation/creation-formations', [FormationController::class, 'create'])->name('candidates.formations.create');
+Route::get('/candidats/formation/{formation}/editer-formations', [FormationController::class, 'edit'])->name('candidates.formations.edit');
+Route::post('/candidats/formation/store', [FormationController::class, 'store'])->name('candidates.formations.store');
+Route::post('/candidats/formation/{formation}/update', [FormationController::class, 'update'])->name('candidates.formations.update');
+Route::post('/candidats/formation/{formation}/destroy', [FormationController::class, 'destroy'])->name('candidates.formations.destroy');
 
 //Route Experience
-Route::get('/candidats/experiences', [ExperienceController::class, 'index'])->name('candidats.experiences.index');
-Route::get('/candidats/experience/{experience}/details', [ExperienceController::class, 'show'])->name('candidats.experiences.show');
-Route::get('/candidats/experience/creation-experiences', [ExperienceController::class, 'create'])->name('candidats.experiences.create');
-Route::get('/candidats/experience/{experience}/editer-experiences', [ExperienceController::class, 'edit'])->name('candidats.experiences.edit');
-Route::post('/candidats/experience/store', [ExperienceController::class, 'store'])->name('candidats.experiences.store');
-Route::post('/candidats/experience/{experience}/update', [ExperienceController::class, 'update'])->name('candidats.experiences.update');
-Route::post('/candidats/experience/{experience}/destroy', [ExperienceController::class, 'destroy'])->name('candidats.experiences.destroy');
+Route::get('/candidats/experiences', [ExperienceController::class, 'index'])->name('candidates.experiences.index');
+Route::get('/candidats/experience/{experience}/details', [ExperienceController::class, 'show'])->name('candidates.experiences.show');
+Route::get('/candidats/experience/creation-experiences', [ExperienceController::class, 'create'])->name('candidates.experiences.create');
+Route::get('/candidats/experience/{experience}/editer-experiences', [ExperienceController::class, 'edit'])->name('candidates.experiences.edit');
+Route::post('/candidats/experience/store', [ExperienceController::class, 'store'])->name('candidates.experiences.store');
+Route::post('/candidats/experience/{experience}/update', [ExperienceController::class, 'update'])->name('candidates.experiences.update');
+Route::post('/candidats/experience/{experience}/destroy', [ExperienceController::class, 'destroy'])->name('candidates.experiences.destroy');
 
 
 //Page Admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/recruteurs', [RecruteurController::class, 'index'])->name('admin.recruteurs');
-Route::get('/candidats', [CandidatController::class, 'index'])->name('admin.candidats');
-Route::delete('/admin/users/{user}', [RecruteurController::class, 'destroy'])->name('admin.recruteurs.destroy');
+Route::get('/recruteurs', [RecruiterController::class, 'index'])->name('admin.recruiters');
+Route::get('/candidats', [CandidateController::class, 'index'])->name('admin.candidates');
+Route::delete('/admin/users/{user}', [RecruiterController::class, 'destroy'])->name('admin.recruiters.destroy');
 
 //Validation offre
-Route::get('/admin/offres', [ValidationOffreController::class, 'index'])->name('admin.offres.index');
-Route::get('/admin/offre/{offre}/details', [ValidationOffreController::class, 'show'])->name('admin.offres.show');
+Route::get('/admin/offres', [ValidationOfferController::class, 'index'])->name('admin.offers.index');
+Route::get('/admin/offre/{offre}/details', [ValidationOfferController::class, 'show'])->name('admin.offers.show');
 
-Route::post('/admin/offre/{offre}/valider', [ValidationOffreController::class, 'valider'])->name('admin.offre.valider');
-Route::post('/admin/offre/{offre}/refuser', [ValidationOffreController::class, 'refuser'])->name('admin.offre.refuser');
+Route::post('/admin/offre/{offre}/valider', [ValidationOfferController::class, 'valider'])->name('admin.offre.valider');
+Route::post('/admin/offre/{offre}/refuser', [ValidationOfferController::class, 'refuser'])->name('admin.offre.refuser');
 
 //Validation Profil
-Route::get('/admin/profils', [ValidationProfilController::class, 'index'])->name('admin.profils.index');
-Route::get('/admin/profil/{user}/details', [ValidationProfilController::class, 'show'])->name('admin.profils.show');
+Route::get('/admin/profils', [ValidationProfileController::class, 'index'])->name('admin.profiles.index');
+Route::get('/admin/profil/{user}/details', [ValidationProfileController::class, 'show'])->name('admin.profiles.show');
 
 //Recherche
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');

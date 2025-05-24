@@ -16,7 +16,8 @@
                     <input type="text" name="titre" class="form-control" placeholder="Quel job vous fait vibrer ?"
                         aria-label="Username">
                     <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                    <input type="text" class="form-control" name="localite" placeholder="Où voulez-vous briller ?" aria-label="Server">
+                    <input type="text" class="form-control" name="localite" placeholder="Où voulez-vous briller ?"
+                        aria-label="Server">
                     <span class="input-group-text"><button type="submit" class="btn-click">Rechercher</button></span>
                 </div>
             </form>
@@ -34,9 +35,9 @@
                             <div class="row">
                                 <div class="col-9">
                                     <h3 class="post-category text-upper"><a
-                                            href="{{ route('offres.show', $offre->id) }}">{{ $offre->titre }}</a></h3>
+                                            href="{{ route('offers.show', $offre->id) }}">{{ $offre->titre }}</a></h3>
                                     <h4 class="post-society text-upper"><a
-                                            href="{{ route('offres.show', $offre->id) }}">{{ $offre->entreprise }}</a></h4>
+                                            href="{{ route('offers.show', $offre->id) }}">{{ $offre->entreprise }}</a></h4>
                                     <p class="local-icon">
                                         <i class="fas fa-map-marker-alt"></i>{{ $offre->localisation }} ~
                                         <a href="offres-details.html" class="text-upper">{{ $offre->contrat }}</a>
@@ -90,7 +91,8 @@
                     <a href="#" class="btn-link align-self-start" data-aos="fade-right" data-aos-delay="100">Trouver
                         mon job</a>
                 </div>
-                <div class="col-lg-6 d-flex align-items-center job-img order-1 order-lg-2" data-aos="fade-right" data-aos-delay="100">
+                <div class="col-lg-6 d-flex align-items-center job-img order-1 order-lg-2" data-aos="fade-right"
+                    data-aos-delay="100">
                     <img src="{{ Vite::asset('resources/images/img2.jpg') }}" alt="">
                 </div>
             </div>
@@ -184,7 +186,8 @@
                     <a href="#" class="btn-link align-self-start" data-aos="fade-right" data-aos-delay="100">Creer
                         une lettre de motivation</a>
                 </div>
-                <div class="col-lg-5 d-flex align-items-center job-img order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-5 d-flex align-items-center job-img order-1 order-lg-2" data-aos="fade-up"
+                    data-aos-delay="100">
                     <img src="{{ Vite::asset('resources/images/motif.jpg') }}" alt="">
                 </div>
             </div>

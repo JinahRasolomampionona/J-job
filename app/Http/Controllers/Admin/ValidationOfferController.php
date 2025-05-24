@@ -1,27 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Offers;
-use App\Models\Profil;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class ValidationOfferController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $totalRecruteurs = User::where('role', 'recruteur')->count();
-        $totalCandidats = User::where('role', 'candidat')->count();
-        $totalOffres = Offers::count();
-        $totalProfils = Profil::count();
-
-        return view('admin.index', compact('totalRecruteurs', 'totalCandidats', 'totalOffres', 'totalProfils'));
-
+        //
+        $offre = Offers::where('status', 'en attente')->get();
+        return view('admin.offers.index', ['offresView' => $offre]);
     }
 
     /**
@@ -43,9 +37,26 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Offers $offre)
     {
         //
+        return view('admin.offers.show', ['offresView' => $offre]);
+    }
+
+    public function valider(Offers $offre)
+    {
+        $offre->status = 'validee';
+        $offre->save();
+
+        return redirect()->back()->with('message', 'Offre validée');
+    }
+
+    public function refuser(Offers $offre)
+    {
+        $offre->status = 'refusee';
+        $offre->save();
+
+        return redirect()->back()->with('message', 'Offre refusée');
     }
 
     /**

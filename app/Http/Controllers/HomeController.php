@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OffresModel;
+use App\Models\Offers;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     //
    public function home() {
-    $offres = OffresModel::where('status', 'validée')->get();
+    $offres = Offers::where('status', 'validee')->get();
     return view('index', ['offresView' => $offres]);
    }
    

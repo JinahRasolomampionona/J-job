@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OffresModel;
+use App\Models\Offers;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -13,7 +13,7 @@ class SearchController extends Controller
             'titre'=>'required|string',
             'localisation'=>'nullable|string'
         ]);
-        $offres = OffresModel::query()
+        $offres = Offers::query()
         ->when(isset($input['localisation']), function($query) use ($input) {
             $query->where('localisation', 'like', "%{$input['localisation']}%");
         }) 

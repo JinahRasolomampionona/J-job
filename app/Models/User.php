@@ -53,16 +53,16 @@ class User extends Authenticatable
 
     public function profil(): HasOne
     {
-        return $this->hasOne(ProfilModel::class, 'user_id');
+        return $this->hasOne(Profil::class, 'user_id');
     }
 
     public function formations(): HasMany
     {
-        return $this->hasMany(FormationModel::class, 'user_id');
+        return $this->hasMany(Formation::class, 'user_id');
     }
 
     public function experiences(): HasMany
     {
-        return $this->hasMany(ExperienceModel::class, 'user_id');
+        return $this->hasMany(Experience::class, 'user_id');
     }
 }
